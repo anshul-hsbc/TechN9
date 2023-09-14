@@ -1,0 +1,138 @@
+body,
+h1,
+h2,
+ul,
+li,
+form {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  /* margin: 20px; */
+}
+
+.bg-glass {
+  background-color: hsla(0, 0%, 100%, 0.255) !important;
+  backdrop-filter: saturate(200%) blur(25px);
+}
+
+h1 {
+  background-color: #6da5d6;
+  text-align: center;
+  color: hsl(0, 29%, 91%);
+}
+h2 {
+  background-color: #6da5d6;
+  text-align: center;
+  color: hsl(0, 29%, 91%);
+}
+
+.manager-info {
+  background-color: #e8e2e2d9;
+  padding: 20px;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+}
+
+.meeting-list {
+  background-color: #e8e2e2d9;
+  padding: 20px;
+  border: 1px solid #ccc;
+  margin-top: 20px;
+}
+
+.meeting-item {
+  border: 1px solid #e8e2e2d9;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.book-room-form {
+  background-color: #e8e2e2d9;
+  padding: 20px;
+  border: 1px solid #ccc;
+  margin-top: 20px;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="time"],
+input[type="number"],
+select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button[type="submit"] {
+  background-color: #0b487d;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #555;
+}
+
+/* .meeting-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    border: 1px solid #e8e2e2d9;
+    padding: 10px;
+} */
+
+.cancel-button {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.meeting-info {
+  flex-grow: 1;
+}
+
+.navbar {
+  background-color: #007bff;
+}
+
+.navbar-brand {
+  color: #7adff3;
+  font-weight: bold;
+}
+
+.navbar-toggler-icon {
+  color: #6db3c7;
+}
+
+.navbar-nav .nav-item {
+  margin-right: 15px;
+}
+
+.nav-link {
+  color: #64bfd8;
+  transition: color 0.3s;
+}
+
+.nav-link:hover {
+  color: #ffcc00;
+}
+
+.navbar-nav .nav-item.active .nav-link {
+  color: #ffcc00;
+}

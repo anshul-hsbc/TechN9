@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<users>
+    <user>
+        <name>John Doe</name>
+        <email>john.doe@example.com</email>
+        <phone>123-456-7890</phone>
+        <role>admin</role>
+    </user>
+    <user>
+        <name>Alice Smith</name>
+        <email>alice.smith@example.com</email>
+        <phone>987-654-3210</phone>
+        <role>manager</role>
+    </user>
+    <user>
+        <name>Bob Johnson</name>
+        <email>bob.johnson@example.com</email>
+        <phone>555-123-4567</phone>
+        <role>member</role>
+    </user>
+    <user>
+        <name>Mary Brown</name>
+        <email>mary.brown@example.com</email>
+        <phone>111-222-3333</phone>
+        <role>admin</role>
+    </user>
+    <user>
+        <name>David Lee</name>
+        <email>david.lee@example.com</email>
+        <phone>333-444-5555</phone>
+        <role>manager</role>
+    </user>
+    <user>
+        <name>Linda Wilson</name>
+        <email>linda.wilson@example.com</email>
+        <phone>999-888-7777</phone>
+        <role>member</role>
+    </user>
+    <user>
+        <name>James Taylor</name>
+        <email>james.taylor@example.com</email>
+        <phone>555-999-8888</phone>
+        <role>admin</role>
+    </user>
+    <user>
+        <name>Susan Clark</name>
+        <email>susan.clark@example.com</email>
+        <phone>777-666-5555</phone>
+        <role>manager</role>
+    </user>
+    <user>
+        <name>Michael White</name>
+        <email>michael.white@example.com</email>
+        <phone>222-333-4444</phone>
+        <role>member</role>
+    </user>
+    <user>
+        <name>Karen Turner</name>
+        <email>karen.turner@example.com</email>
+        <phone>888-777-6666</phone>
+        <role>admin</role>
+    </user>
+</users>

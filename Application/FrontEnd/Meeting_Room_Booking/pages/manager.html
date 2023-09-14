@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manager Page</title>
+    <!-- Include Bootstrap CSS from a CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <!-- Include your custom stylesheet -->
+    <link rel="stylesheet" type="text/css" href="/styles/manager.css">
+</head>
+
+<body>
+    <!-- Add Bootstrap classes to elements for styling -->
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #21D4FD;
+        background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
+        ">
+        <div class="container-fluid px-5">
+            <a class="navbar-brand ms-3" href="#">
+                <h3 style="color: white;">Manager Dashboard</h3>
+            </a>
+            <div class="collapse navbar-collapse" id="navbarScroll">
+                <ul class="navbar-nav ms-auto ms-3 my-2 my-lg-0 navbar-nav-scroll d-flex"
+                    style="--bs-scroll-height: 100px;">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" style="color: white;" href="#">Home</a>
+                    </li>
+                </ul>
+                <a href="/pages/login.html"><button class="btn rounded-pill btn-light px-5 ms-5">Logout</button></a>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar -->
+
+
+    <div class="container mt-5" style="width: 50vw;">
+        <!-- <h1 class="display-4">WELCOME</h1> -->
+
+        <div class="manager-info mt-4">
+            <h2>Manager Information:</h2>
+            <ul class="list-unstyled">
+                <li><strong>Name:</strong> John Doe</li>
+                <li><strong>Email:</strong> john@example.com</li>
+                <li><strong>Last Logged In:</strong> September 11, 2023 10:00 AM</li>
+            </ul>
+        </div>
+
+        <div class="meeting-list mt-4">
+            <h2>Scheduled Meetings:</h2>
+            <ul id="meetingList" class="list-unstyled">
+
+            </ul>
+        </div>
+
+        <div class="book-room-form mt-4">
+            <h2>Book a Meeting Room:</h2>
+            <form id="bookRoomForm">
+                <div class="mb-3">
+                    <label for="meetingName" class="form-label">Meeting Name:</label>
+                    <input type="text" id="meetingName" name="meetingName" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="meetingRoom" class="form-label">Meeting Room:</label>
+                    <select id="meetingRoom" name="meetingRoom" class="form-select" required>
+                        <option value="Room A">Room A</option>
+                        <option value="Room B">Room B</option>
+                        <option value="Room C">Room C</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="startDate" class="form-label">Start Date:</label>
+                    <input type="date" id="startDate" name="startDate" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="startTime" class="form-label">Start Time:</label>
+                    <input type="time" id="startTime" name="startTime" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="duration" class="form-label">Duration (in hours):</label>
+                    <input type="number" id="duration" name="duration" class="form-control" min="1" required>
+                </div>
+                <div class="mb-3">
+                    <label for="userSelect" class="form-label">Select User:</label>
+                    <select id="userSelect" name="userSelect" class="form-select" required>
+
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Book Room</button>
+            </form>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+
+
+        const meetings = [
+            {
+                name: "Project Kickoff",
+                room: "Room A",
+                startDate: "2023-09-15",
+                startTime: "10:00",
+                duration: "1"
+            },
+
+        ];
+
+
+        function displayMeetings() {
+            const meetingList = document.getElementById("meetingList");
+            meetingList.innerHTML = "";
+
+            meetings.forEach((meeting, index) => {
+                const listItem = document.createElement("li");
+                listItem.classList.add("meeting-item");
+                listItem.innerHTML = `
+            <strong>Meeting Name:</strong> ${meeting.name}<br>
+            <strong>Meeting Room:</strong> ${meeting.room}<br>
+            <strong>Start Date:</strong> ${meeting.startDate}<br>
+            <strong>Start Time:</strong> ${meeting.startTime}<br>
+            <strong>Duration (hours):</strong> ${meeting.duration}
+        `;
+
+                const removeButton = document.createElement("button");
+                removeButton.innerText = "Cancel";
+                removeButton.classList.add("cancel-button");
+                removeButton.addEventListener("click", () => {
+
+                    meetings.splice(index, 1);
+
+                    displayMeetings();
+                });
+
+                listItem.appendChild(removeButton);
+                meetingList.appendChild(listItem);
+            });
+
+        }
+
+
+        displayMeetings();
+
+
+
+        const bookRoomForm = document.getElementById("bookRoomForm");
+        bookRoomForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+            const formData = new FormData(bookRoomForm);
+            const meetingData = {
+                name: formData.get("meetingName"),
+                room: formData.get("meetingRoom"),
+                startDate: formData.get("startDate"),
+                startTime: formData.get("startTime"),
+                duration: formData.get("duration")
+            };
+
+            meetings.push(meetingData);
+            displayMeetings();
+            bookRoomForm.reset();
+        });
+
+
+        const userSelect = document.getElementById("userSelect");
+
+
+        function loadUsersFromXML() {
+            const userSelect = document.getElementById("userSelect");
+
+
+            fetch('data.xml')
+                .then((response) => response.text())
+                .then((xmlText) => {
+                    console.log("hasdfs");
+                    const parser = new DOMParser();
+                    const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
+                    const users = xmlDoc.getElementsByTagName("user");
+                    console.log(users);
+
+                    for (let i = 0; i < users.length; i++) {
+                        console.log("in for");
+                        console.log(users[i]);
+                        const username = users[i].querySelector("name").textContent;
+                        console.log(username);
+                        const option = document.createElement("option");
+                        option.value = username;
+                        option.textContent = username;
+                        userSelect.appendChild(option);
+                    }
+                })
+                .catch((error) => {
+                    console.error("Error loading user data:", error);
+                });
+        }
+
+
+        loadUsersFromXML();
+
+
+
+    </script>
+
+</body>
+
+</html>
